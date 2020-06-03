@@ -126,7 +126,7 @@ public class ExchangeInjectActuator extends AbstractActuator {
     ExchangeV2Store exchangeV2Store = chainBaseManager.getExchangeV2Store();
     if (!this.any.is(ExchangeInjectContract.class)) {
       throw new ContractValidateException(
-          "contract type error,expected type [ExchangeInjectContract],real type[" + any
+          "contract type error, expected type [ExchangeInjectContract], real type[" + any
               .getClass() + "]");
     }
     final ExchangeInjectContract contract;
@@ -144,13 +144,13 @@ public class ExchangeInjectActuator extends AbstractActuator {
     }
 
     if (!accountStore.has(ownerAddress)) {
-      throw new ContractValidateException("account[" + readableOwnerAddress + "] not exists");
+      throw new ContractValidateException("account[" + readableOwnerAddress + "] does not exist");
     }
 
     AccountCapsule accountCapsule = accountStore.get(ownerAddress);
 
     if (accountCapsule.getBalance() < calcFee()) {
-      throw new ContractValidateException("No enough balance for exchange inject fee!");
+      throw new ContractValidateException("No enough balance for exchange injection fee!");
     }
 
     ExchangeCapsule exchangeCapsule;
@@ -159,11 +159,11 @@ public class ExchangeInjectActuator extends AbstractActuator {
           get(ByteArray.fromLong(contract.getExchangeId()));
 
     } catch (ItemNotFoundException ex) {
-      throw new ContractValidateException("Exchange[" + contract.getExchangeId() + "] not exists");
+      throw new ContractValidateException("Exchange[" + contract.getExchangeId() + "] does not exist");
     }
 
     if (!accountCapsule.getAddress().equals(exchangeCapsule.getCreatorAddress())) {
-      throw new ContractValidateException("account[" + readableOwnerAddress + "] is not creator");
+      throw new ContractValidateException("account[" + readableOwnerAddress + "] is not the creator");
     }
 
     byte[] firstTokenID = exchangeCapsule.getFirstTokenId();
@@ -188,12 +188,11 @@ public class ExchangeInjectActuator extends AbstractActuator {
     }
 
     if (firstTokenBalance == 0 || secondTokenBalance == 0) {
-      throw new ContractValidateException("Token balance in exchange is equal with 0,"
-          + "the exchange has been closed");
+      throw new ContractValidateException("Token balance in exchange is 0, the exchange has been closed");
     }
 
     if (tokenQuant <= 0) {
-      throw new ContractValidateException("injected token quant must greater than zero");
+      throw new ContractValidateException("injected token quantity must be greater than zero");
     }
 
     BigInteger bigFirstTokenBalance = new BigInteger(String.valueOf(firstTokenBalance));
@@ -217,12 +216,12 @@ public class ExchangeInjectActuator extends AbstractActuator {
     }
 
     if (anotherTokenQuant <= 0) {
-      throw new ContractValidateException("the calculated token quant  must be greater than 0");
+      throw new ContractValidateException("the calculated token quantity must be greater than 0");
     }
 
     long balanceLimit = dynamicStore.getExchangeBalanceLimit();
     if (newTokenBalance > balanceLimit || newAnotherTokenBalance > balanceLimit) {
-      throw new ContractValidateException("token balance must less than " + balanceLimit);
+      throw new ContractValidateException("token balance must be less than " + balanceLimit);
     }
 
     if (Arrays.equals(tokenID, TRX_SYMBOL_BYTES)) {
