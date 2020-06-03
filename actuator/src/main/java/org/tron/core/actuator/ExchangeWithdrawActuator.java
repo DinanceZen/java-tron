@@ -136,7 +136,7 @@ public class ExchangeWithdrawActuator extends AbstractActuator {
     ExchangeV2Store exchangeV2Store = chainBaseManager.getExchangeV2Store();
     if (!this.any.is(ExchangeWithdrawContract.class)) {
       throw new ContractValidateException(
-          "contract type error,expected type [ExchangeWithdrawContract],real type[" + any
+          "contract type error, expected type [ExchangeWithdrawContract], real type[" + any
               .getClass() + "]");
     }
     final ExchangeWithdrawContract contract;
@@ -154,7 +154,7 @@ public class ExchangeWithdrawActuator extends AbstractActuator {
     }
 
     if (!accountStore.has(ownerAddress)) {
-      throw new ContractValidateException("account[" + readableOwnerAddress + "] not exists");
+      throw new ContractValidateException("account[" + readableOwnerAddress + "] does not exist");
     }
 
     AccountCapsule accountCapsule = accountStore.get(ownerAddress);
@@ -168,11 +168,11 @@ public class ExchangeWithdrawActuator extends AbstractActuator {
       exchangeCapsule = Commons.getExchangeStoreFinal(dynamicStore, exchangeStore, exchangeV2Store).
           get(ByteArray.fromLong(contract.getExchangeId()));
     } catch (ItemNotFoundException ex) {
-      throw new ContractValidateException("Exchange[" + contract.getExchangeId() + "] not exists");
+      throw new ContractValidateException("Exchange[" + contract.getExchangeId() + "] does not exist");
     }
 
     if (!accountCapsule.getAddress().equals(exchangeCapsule.getCreatorAddress())) {
-      throw new ContractValidateException("account[" + readableOwnerAddress + "] is not creator");
+      throw new ContractValidateException("account[" + readableOwnerAddress + "] is not the creator");
     }
 
     byte[] firstTokenID = exchangeCapsule.getFirstTokenId();
@@ -196,12 +196,11 @@ public class ExchangeWithdrawActuator extends AbstractActuator {
     }
 
     if (tokenQuant <= 0) {
-      throw new ContractValidateException("withdraw token quant must greater than zero");
+      throw new ContractValidateException("withdraw token quantity must be greater than zero");
     }
 
     if (firstTokenBalance == 0 || secondTokenBalance == 0) {
-      throw new ContractValidateException("Token balance in exchange is equal with 0,"
-          + "the exchange has been closed");
+      throw new ContractValidateException("Token balance in exchange is 0, the exchange has been closed");
     }
 
     BigDecimal bigFirstTokenBalance = new BigDecimal(String.valueOf(firstTokenBalance));
@@ -217,7 +216,7 @@ public class ExchangeWithdrawActuator extends AbstractActuator {
       }
 
       if (anotherTokenQuant <= 0) {
-        throw new ContractValidateException("withdraw another token quant must greater than zero");
+        throw new ContractValidateException("withdraw another token quantity must be greater than zero");
       }
 
       double remainder = bigSecondTokenBalance.multiply(bigTokenQuant)
@@ -237,14 +236,14 @@ public class ExchangeWithdrawActuator extends AbstractActuator {
       }
 
       if (anotherTokenQuant <= 0) {
-        throw new ContractValidateException("withdraw another token quant must greater than zero");
+        throw new ContractValidateException("withdraw another token quantity must be greater than zero");
       }
 
       double remainder = bigFirstTokenBalance.multiply(bigTokenQuant)
           .divide(bigSecondTokenBalance, 4, BigDecimal.ROUND_HALF_UP).doubleValue()
           - anotherTokenQuant;
       if (remainder / anotherTokenQuant > 0.0001) {
-        throw new ContractValidateException("Not precise enough");
+        throw new ContractValidateException("insufficient precision");
       }
     }
 
