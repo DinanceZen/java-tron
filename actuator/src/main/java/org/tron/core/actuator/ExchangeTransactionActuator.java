@@ -118,7 +118,7 @@ public class ExchangeTransactionActuator extends AbstractActuator {
     ExchangeV2Store exchangeV2Store = chainBaseManager.getExchangeV2Store();
     if (!this.any.is(ExchangeTransactionContract.class)) {
       throw new ContractValidateException(
-          "contract type error,expected type [ExchangeTransactionContract],real type[" + any
+          "contract type error, expected type [ExchangeTransactionContract], real type[" + any
               .getClass() + "]");
     }
     final ExchangeTransactionContract contract;
@@ -136,7 +136,7 @@ public class ExchangeTransactionActuator extends AbstractActuator {
     }
 
     if (!accountStore.has(ownerAddress)) {
-      throw new ContractValidateException("account[" + readableOwnerAddress + "] not exists");
+      throw new ContractValidateException("account[" + readableOwnerAddress + "] does not exist");
     }
 
     AccountCapsule accountCapsule = accountStore.get(ownerAddress);
@@ -150,7 +150,7 @@ public class ExchangeTransactionActuator extends AbstractActuator {
       exchangeCapsule = Commons.getExchangeStoreFinal(dynamicStore, exchangeStore, exchangeV2Store).
           get(ByteArray.fromLong(contract.getExchangeId()));
     } catch (ItemNotFoundException ex) {
-      throw new ContractValidateException("Exchange[" + contract.getExchangeId() + "] not exists");
+      throw new ContractValidateException("Exchange[" + contract.getExchangeId() + "] does not exist");
     }
 
     byte[] firstTokenID = exchangeCapsule.getFirstTokenId();
@@ -172,16 +172,15 @@ public class ExchangeTransactionActuator extends AbstractActuator {
     }
 
     if (tokenQuant <= 0) {
-      throw new ContractValidateException("token quant must greater than zero");
+      throw new ContractValidateException("token quantity must be greater than zero");
     }
 
     if (tokenExpected <= 0) {
-      throw new ContractValidateException("token expected must greater than zero");
+      throw new ContractValidateException("token expected must be greater than zero");
     }
 
     if (firstTokenBalance == 0 || secondTokenBalance == 0) {
-      throw new ContractValidateException("Token balance in exchange is equal with 0,"
-          + "the exchange has been closed");
+      throw new ContractValidateException("Token balance in exchange 0, the exchange has been closed");
     }
 
     long balanceLimit = dynamicStore.getExchangeBalanceLimit();
@@ -189,7 +188,7 @@ public class ExchangeTransactionActuator extends AbstractActuator {
         : secondTokenBalance);
     tokenBalance += tokenQuant;
     if (tokenBalance > balanceLimit) {
-      throw new ContractValidateException("token balance must less than " + balanceLimit);
+      throw new ContractValidateException("token balance must be less than " + balanceLimit);
     }
 
     if (Arrays.equals(tokenID, TRX_SYMBOL_BYTES)) {
@@ -204,7 +203,7 @@ public class ExchangeTransactionActuator extends AbstractActuator {
 
     long anotherTokenQuant = exchangeCapsule.transaction(tokenID, tokenQuant);
     if (anotherTokenQuant < tokenExpected) {
-      throw new ContractValidateException("token required must greater than expected");
+      throw new ContractValidateException("token required must be greater than expected");
     }
 
     return true;
