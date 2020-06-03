@@ -142,7 +142,7 @@ public class ExchangeCreateActuator extends AbstractActuator {
     DynamicPropertiesStore dynamicStore = chainBaseManager.getDynamicPropertiesStore();
     if (!this.any.is(ExchangeCreateContract.class)) {
       throw new ContractValidateException(
-          "contract type error,expected type [ExchangeCreateContract],real type[" + any
+          "contract type error,expected type [ExchangeCreateContract], real type[" + any
               .getClass() + "]");
     }
     final ExchangeCreateContract contract;
@@ -160,7 +160,7 @@ public class ExchangeCreateActuator extends AbstractActuator {
     }
 
     if (!accountStore.has(ownerAddress)) {
-      throw new ContractValidateException("account[" + readableOwnerAddress + "] not exists");
+      throw new ContractValidateException("account[" + readableOwnerAddress + "] does not exist");
     }
 
     AccountCapsule accountCapsule = accountStore.get(ownerAddress);
@@ -185,16 +185,16 @@ public class ExchangeCreateActuator extends AbstractActuator {
     }
 
     if (Arrays.equals(firstTokenID, secondTokenID)) {
-      throw new ContractValidateException("cannot exchange same tokens");
+      throw new ContractValidateException("cannot exchange the same tokens");
     }
 
     if (firstTokenBalance <= 0 || secondTokenBalance <= 0) {
-      throw new ContractValidateException("token balance must greater than zero");
+      throw new ContractValidateException("token balance must be greater than zero");
     }
 
     long balanceLimit = dynamicStore.getExchangeBalanceLimit();
     if (firstTokenBalance > balanceLimit || secondTokenBalance > balanceLimit) {
-      throw new ContractValidateException("token balance must less than " + balanceLimit);
+      throw new ContractValidateException("token balance must be less than " + balanceLimit);
     }
 
     if (Arrays.equals(firstTokenID, TRX_SYMBOL_BYTES)) {
