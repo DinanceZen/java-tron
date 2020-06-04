@@ -1207,7 +1207,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token quant must be greater than zero",
+      Assert.assertEquals("token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1253,7 +1253,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token quant must be greater than zero",
+      Assert.assertEquals("token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
