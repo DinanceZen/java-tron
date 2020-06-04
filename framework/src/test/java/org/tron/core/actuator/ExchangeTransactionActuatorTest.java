@@ -833,7 +833,7 @@ public class ExchangeTransactionActuatorTest {
       fail("account[+OWNER_ADDRESS_NOACCOUNT+] not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] not exists",
+      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -880,7 +880,7 @@ public class ExchangeTransactionActuatorTest {
       fail("account[+OWNER_ADDRESS_NOACCOUNT+] not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] not exists",
+      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -924,7 +924,7 @@ public class ExchangeTransactionActuatorTest {
       fail("Exchange not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Exchange[3] not exists",
+      Assert.assertEquals("Exchange[3] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -969,7 +969,7 @@ public class ExchangeTransactionActuatorTest {
       fail("Exchange not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Exchange[3] not exists",
+      Assert.assertEquals("Exchange[3] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1108,8 +1108,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Token balance in exchange is equal with 0,"
-              + "the exchange has been closed",
+      Assert.assertEquals("Token balance in exchange is 0, the exchange has been closed",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1162,8 +1161,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Token balance in exchange is equal with 0,"
-              + "the exchange has been closed",
+      Assert.assertEquals("Token balance in exchange is 0, the exchange has been closed",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1209,7 +1207,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token quant must greater than zero",
+      Assert.assertEquals("token quant must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1255,7 +1253,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token quant must greater than zero",
+      Assert.assertEquals("token quant must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1299,7 +1297,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token balance must less than 1000000000000000",
+      Assert.assertEquals("token balance must be less than 1000000000000000",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1345,7 +1343,7 @@ public class ExchangeTransactionActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token balance must less than 1000000000000000",
+      Assert.assertEquals("token balance must be less than 1000000000000000",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1573,7 +1571,7 @@ public class ExchangeTransactionActuatorTest {
       fail("should not run here");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token required must greater than expected",
+      Assert.assertEquals("token required must be greater than expected",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1628,7 +1626,7 @@ public class ExchangeTransactionActuatorTest {
       fail("should not run here");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token required must greater than expected",
+      Assert.assertEquals("token required must be greater than expected",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1680,7 +1678,7 @@ public class ExchangeTransactionActuatorTest {
       fail("should not run here");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("token expected must greater than zero",
+      Assert.assertEquals("token expected must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1714,7 +1712,7 @@ public class ExchangeTransactionActuatorTest {
         .setAny(invalidContractTypes);
     TransactionResultCapsule ret = new TransactionResultCapsule();
     processAndCheckInvalid(actuator, ret, "contract type error",
-        "contract type error,expected type [ExchangeTransactionContract],real type["
+        "contract type error, expected type [ExchangeTransactionContract], real type["
             + invalidContractTypes.getClass() + "]");
   }
 
