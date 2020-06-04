@@ -1413,7 +1413,7 @@ public class ExchangeCreateActuatorTest {
         .build());
     actuatorTest.setInvalidContract(invalidContractTypes);
     actuatorTest.setInvalidContractTypeMsg("contract type error",
-        "contract type error,expected type [ExchangeCreateContract],real type[");
+        "contract type error, expected type [ExchangeCreateContract], real type[");
     actuatorTest.invalidContractType();
 
     dbManager.getDynamicPropertiesStore().saveAllowSameTokenName(0);
