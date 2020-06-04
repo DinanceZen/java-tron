@@ -727,7 +727,7 @@ public class ExchangeWithdrawActuatorTest {
       fail("account[+OWNER_ADDRESS_NOACCOUNT+] not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] not exists",
+      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -772,7 +772,7 @@ public class ExchangeWithdrawActuatorTest {
       fail("account[+OWNER_ADDRESS_NOACCOUNT+] not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] not exists",
+      Assert.assertEquals("account[" + OWNER_ADDRESS_NOACCOUNT + "] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -816,7 +816,7 @@ public class ExchangeWithdrawActuatorTest {
       fail("Exchange not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Exchange[4] not exists",
+      Assert.assertEquals("Exchange[4] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -860,7 +860,7 @@ public class ExchangeWithdrawActuatorTest {
       fail("Exchange not exists");
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Exchange[4] not exists",
+      Assert.assertEquals("Exchange[4] does not exist",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -905,7 +905,7 @@ public class ExchangeWithdrawActuatorTest {
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
       Assert.assertEquals("account[a0548794500882809695a8a687866e76d4271a1abc]"
-              + " is not creator",
+              + " is not the creator",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -952,7 +952,7 @@ public class ExchangeWithdrawActuatorTest {
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
       Assert.assertEquals("account[a0548794500882809695a8a687866e76d4271a1abc]"
-              + " is not creator",
+              + " is not the creator",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1088,8 +1088,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Token balance in exchange is equal with 0,"
-              + "the exchange has been closed",
+      Assert.assertEquals("Token balance in exchange is 0, the exchange has been closed",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1142,8 +1141,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Token balance in exchange is equal with 0,"
-              + "the exchange has been closed",
+      Assert.assertEquals("Token balance in exchange is 0, the exchange has been closed",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1189,7 +1187,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("withdraw token quant must greater than zero",
+      Assert.assertEquals("withdraw token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1236,7 +1234,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("withdraw token quant must greater than zero",
+      Assert.assertEquals("withdraw token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1280,7 +1278,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("withdraw another token quant must greater than zero",
+      Assert.assertEquals("withdraw another token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1327,7 +1325,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("withdraw another token quant must greater than zero",
+      Assert.assertEquals("withdraw another token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1362,7 +1360,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Not precise enough",
+      Assert.assertEquals("insufficient precision",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1417,7 +1415,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Not precise enough",
+      Assert.assertEquals("insufficient precision",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1472,7 +1470,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("withdraw another token quant must greater than zero",
+      Assert.assertEquals("withdraw another token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1527,7 +1525,7 @@ public class ExchangeWithdrawActuatorTest {
       fail();
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("withdraw another token quant must greater than zero",
+      Assert.assertEquals("withdraw another token quantity must be greater than zero",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1787,7 +1785,7 @@ public class ExchangeWithdrawActuatorTest {
         .setAny(invalidContractTypes);
     TransactionResultCapsule ret = new TransactionResultCapsule();
     processAndCheckInvalid(actuator, ret, "contract type error",
-        "contract type error,expected type [ExchangeWithdrawContract],real type["
+        "contract type error, expected type [ExchangeWithdrawContract], real type["
             + invalidContractTypes.getClass() + "]");
   }
 
