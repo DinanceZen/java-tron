@@ -223,7 +223,7 @@ public class ExchangeWithdrawActuator extends AbstractActuator {
           .divide(bigFirstTokenBalance, 4, BigDecimal.ROUND_HALF_UP).doubleValue()
           - anotherTokenQuant;
       if (remainder / anotherTokenQuant > 0.0001) {
-        throw new ContractValidateException("Not precise enough");
+        throw new ContractValidateException("insufficient precision");
       }
 
     } else {
