@@ -1489,7 +1489,7 @@ public class ExchangeWithdrawActuatorTest {
       Assert.assertEquals(ret.getInstance().getRet(), code.SUCESS);
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Not precise enough",
+      Assert.assertEquals("insufficient precision",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
@@ -1544,7 +1544,7 @@ public class ExchangeWithdrawActuatorTest {
       Assert.assertEquals(ret.getInstance().getRet(), code.SUCESS);
     } catch (ContractValidateException e) {
       Assert.assertTrue(e instanceof ContractValidateException);
-      Assert.assertEquals("Not precise enough",
+      Assert.assertEquals("insufficient precision",
           e.getMessage());
     } catch (ContractExeException e) {
       Assert.assertFalse(e instanceof ContractExeException);
