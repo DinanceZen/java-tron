@@ -180,7 +180,7 @@ public class ExchangeTransactionActuator extends AbstractActuator {
     }
 
     if (firstTokenBalance == 0 || secondTokenBalance == 0) {
-      throw new ContractValidateException("Token balance in exchange 0, the exchange has been closed");
+      throw new ContractValidateException("Token balance in exchange is 0, the exchange has been closed");
     }
 
     long balanceLimit = dynamicStore.getExchangeBalanceLimit();
